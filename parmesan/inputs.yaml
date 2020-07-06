@@ -1,0 +1,53 @@
+chooseColumns:
+  show: true
+  input_type: selectInput
+  input_params:
+    label: chooseColumns
+    choices: datasetColumnChoices()
+    selected: datasetColumnSelected()
+    multiple: true
+fillval:
+  show: true
+  input_type: selectInput
+  input_params:
+    label: fillval
+    choices: datasetColumnChoices()
+    selected: 1
+  update_param: value
+colour_method:
+  show: true
+  show_if:
+    useFillValue():
+      equals: true
+  input_type: selectInput
+  input_params:
+    label: colour_method
+    choices: colourMethodChoices()
+    selected: colourpalette
+palette:
+  show: true
+  show_if:
+    colour_method:
+      equals: colourpalette
+  input_type: selectInput
+  input_params:
+    label: palette
+    choices: colourPaletteChoices()
+    selected: Accent
+colour_custom:
+  show: true
+  show_if:
+    colour_method:
+      equals: custom
+  input_type: colorPaletteInput
+  input_params:
+    label: colour_custom
+    colors: colourCustomChoices()
+    max_colors: maxCustomChoices()
+stratumColour:
+  show: true
+  input_type: radioButtons
+  input_params:
+    label: stratumColour
+    choices: stratumColourChoices()
+    selected: black

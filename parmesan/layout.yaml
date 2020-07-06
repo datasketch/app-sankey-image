@@ -1,0 +1,15 @@
+columns:
+  label: columns
+  inputs:
+    - chooseColumns
+    - fillval
+colours:
+  label: choose_flow_colours
+  inputs:
+    - colour_method
+    - palette
+    - colour_custom
+styling:
+  label: styling
+  inputs:
+    - stratumColour
