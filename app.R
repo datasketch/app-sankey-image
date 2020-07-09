@@ -68,8 +68,7 @@ server <- function(input, output) {
   })
   
   labels <- reactive({
-    sm_f <- c("data/titanic_data.csv", "data/election_data.csv")
-    # sm_f <- paste0("data/", i_(c("sample_titanic", "sample_elections"), lang()))
+    sm_f <- paste0("data/", i_(c("sample_titanic", "sample_elections"), lang()))
     names(sm_f) <- i_(c("sample_titanic_name", "sample_elections_name"), lang())
     
     list(sampleLabel = i_("sample_lb", lang()), 
