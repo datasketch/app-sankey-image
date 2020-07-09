@@ -4,10 +4,10 @@ options: Optionen
 viz: Sankey-Diagramm
 sample: Beispiel-Datensatz
 sample_lb: Wähle einen Beispiel-Datensatz aus
-sample_ch_nm_0: Titanic
-sample_ch_0: titanic_data.csv
-sample_ch_nm_1: Parlamentswahlen in Großbritannien 2019
-sample_ch_1: election_data.csv
+sample_titanic_name: Titanic
+sample_titanic: titanic_data.csv
+sample_elections_name: Parlamentswahlen in Großbritannien 2019
+sample_elections: election_data.csv
 paste: Kopieren & Einfügen
 paste_pl: Hier kopieren & einfügen
 upload: Hochladen von CSV/XLS
@@ -31,6 +31,8 @@ stratumColour: Wähle eine Farbe für das Stratum
 download_plot: Lade das Diagramm herunter
 en: Englisch
 de: Deutsch
+es: Spanisch
+pt: Portugiesisch
 columns: Spalten
 choose_flow_colours: Wähle Flow-Farben
 styling: Style-Einstellungen

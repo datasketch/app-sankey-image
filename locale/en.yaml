@@ -4,10 +4,10 @@ options: Options
 viz: Sankey plot
 sample: Sample data
 sample_lb: Select a sample data
-sample_ch_nm_0: Titanic
-sample_ch_0: titanic_data.csv
-sample_ch_nm_1: UK general election 2019
-sample_ch_1: election_data.csv
+sample_titanic_name: Titanic
+sample_titanic: titanic_data.csv
+sample_elections_name: UK general election 2019
+sample_elections: election_data.csv
 paste: Copy & paste
 paste_pl: Copy and paste it here
 upload: CSV/XLS upload  
@@ -31,6 +31,8 @@ stratumColour: Choose colour of stratum
 download_plot: Download plot
 en: English
 de: German
+es: Spanish
+pt: Portuguese
 columns: Columns
 choose_flow_colours: Choose flow colours
 styling: Styling

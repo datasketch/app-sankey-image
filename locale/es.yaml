@@ -1,0 +1,38 @@
+upload_data: Cargar datos
+dataset: Conjunto de datos
+options: Opciones
+viz: Diagrama de Sankey
+sample: Datos de la muestra
+sample_lb: Selecciona datos de muestra
+sample_titanic_name: Titanic
+sample_titanic: titanic_data.csv
+sample_elections_name: Elecciones generales del Reino Unido 2019
+sample_elections: election_data.csv
+paste: Copiar & Pegar
+paste_pl: Copiar y pegar aquí
+upload: Cargar CSV/XLS  
+upload_lb: Elije el archivo CSV/XLS
+upload_bt_lb: Navegar...
+upload_pl: No hay ningún archivo seleccionado
+google: Google sheets
+google_sh_lb: Datos de Google sheets
+google_sh_pl: https://docs.google.com/spreadsheets/...
+google_sh_pg_lb: Sheet
+chooseColumns: Selecciona al menos dos columnas como ejes de flujo
+fillval: Opcionalmente, elige una columna como variable de color
+colour_method: Selecciona una opción para colorear los flujos
+palette: Elije la paleta de colores
+colourpalette: Paleta de colores
+custom: Personalizado
+black: Negro
+white: Blanco
+colour_custom: Selecciona los colores personalizados
+stratumColour: Elije el color del estrato
+download_plot: Descargar gráfico
+en: Inglés
+de: Alemán
+es: Español
+pt: Portugués
+columns: Columnas
+choose_flow_colours: Elije los colores del flujo
+styling: Estilo
