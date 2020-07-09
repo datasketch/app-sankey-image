@@ -50,33 +50,31 @@ ui <- panelsPage(useShi18ny(),
 # Define server logic ----
 server <- function(input, output) {
   
-  inputData <- callModule(tableInput, 
-                          "initial_data",
-                          sampleFile =
-                            list("Titanic"="./data/titanic_data.csv",
-                                 "UK general election 2019"="./data/election_data.csv"))
-  
   i18n <- list(defaultLang = "en", 
-               availableLangs = c("en", "de"))
+               availableLangs = c("en", "de", "es", "pt"))
+  
   lang <- callModule(langSelector, "lang", i18n = i18n, showSelector = FALSE)
   
-  observeEvent(lang(), {uiLangUpdate(input$shi18ny_ui_classes, lang())})
+  observeEvent(lang(),{
+    uiLangUpdate(input$shi18ny_ui_classes, lang())
+    })
   
   output$dataInput <- renderUI({
     choices <- c("sampleData", "pasted", "fileUpload", "googleSheets")
     names(choices) <- i_(c("sample", "paste", "upload", "google"), lang = lang())
     tableInputUI("initial_data", 
                  choices = choices,
-                 selected = ifelse(is.null(input$`initial_data-tableInput`), "sampleData", input$`initial_data-tableInput`))
+                 selected =  "sampleData")
   })
   
   labels <- reactive({
-    
-    sm_f <- paste0("data/", i_(c("sample_ch_0", "sample_ch_1"), lang()))
-    names(sm_f) <- i_(c("sample_ch_nm_0", "sample_ch_nm_1"), lang())
+    sm_f <- c("data/titanic_data.csv", "data/election_data.csv")
+    # sm_f <- paste0("data/", i_(c("sample_titanic", "sample_elections"), lang()))
+    names(sm_f) <- i_(c("sample_titanic_name", "sample_elections_name"), lang())
     
     list(sampleLabel = i_("sample_lb", lang()), 
          sampleFiles = sm_f,
+         sampleSelected = sm_f[1],
          
          pasteLabel = i_("paste", lang()), 
          pasteValue = "", 
@@ -94,11 +92,32 @@ server <- function(input, output) {
     )
   })
   
+  inputData <- eventReactive(labels(), {
+    do.call(callModule, c(tableInput,
+                          "initial_data",
+                          labels()))
+  })
+  
   output$dataset <- renderUI({
     if (is.null(inputData())) 
       return()
-    suppressWarnings(hotr("hotr_input", data = inputData(), order = NULL, options = list(height = 470), enableCTypes = FALSE))
+    suppressWarnings(hotr("hotr_input", data = inputData(), options = list(height = 470)))
   })
+  
+  data_fringe <- reactive({
+    suppressWarnings( hotr::hotr_fringe(input$hotr_input))
+  })
+  
+  dic_load <- reactive({
+    data_fringe()$dic
+  })
+  
+  data_load <- reactive({
+    data <- data_fringe()$data
+    names(data) <- dic_load()$label
+    as.data.frame(data)
+  })
+  
   
   path <- "parmesan"
   parmesan <- parmesan_load(path)
@@ -113,11 +132,11 @@ server <- function(input, output) {
   
   
   datasetColumnChoices <- reactive({
-    names(inputData())
+    dic_load()$label
   })
   
   datasetColumnSelected <- reactive({
-    names(inputData())[1:2]
+    dic_load()$label[1:2]
   })
   
   useFillValue <- reactive({
@@ -163,13 +182,15 @@ server <- function(input, output) {
   }) 
   
   categoriesFill <- reactive({
-    inputData() %>% select(input$fillval) %>% distinct() %>% pull()
+    data_load() %>% select(input$fillval) %>% distinct() %>% pull()
   })
   
   plot_data <- reactive({
-    prepare_data(df = inputData(), 
+    data <- prepare_data(df = data_load(), 
                  col_vars = input$chooseColumns, 
                  fill_var = input$fillval)
+    data <- data %>% mutate(fill = as.character(fill))
+    data
     })
   
   plot <- reactive({
