@@ -1,25 +1,13 @@
-.Rbuildignore
-
 # History files
 .Rhistory
 .Rapp.history
 
-# Example code in package build process
-*-Ex.R
-
-# RStudio files
+# RStudio project files
 .Rproj.user/
 .Rproj.user/*
 
 # RData
 .RData
 
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-#*.Rproj
-.Rproj.user
-
-## Local locale for testing
-inst/doc
+# Deployment files
+rsconnect/
