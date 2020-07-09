@@ -22,6 +22,4 @@ vignettes/*.pdf
 .Rproj.user
 
 ## Local locale for testing
-locale/
-locale/*
 inst/doc
