@@ -1,0 +1,36 @@
+upload_data: Upload data
+dataset: Dataset
+options: Options
+viz: Sankey plot
+sample: Sample data
+sample_lb: Select a sample data
+sample_ch_nm_0: Titanic
+sample_ch_0: titanic_data.csv
+sample_ch_nm_1: UK general election 2019
+sample_ch_1: election_data.csv
+paste: Copy & paste
+paste_pl: Copy and paste it here
+upload: CSV/XLS upload  
+upload_lb: Choose CSV/XLS file
+upload_bt_lb: Browse...
+upload_pl: No file selected
+google: Google sheets
+google_sh_lb: Data from Google sheet
+google_sh_pl: https://docs.google.com/spreadsheets/...
+google_sh_pg_lb: Sheet
+chooseColumns: Select at least two columns as flow axes
+fillval: Optionally set column as fill variable
+colour_method: Select option for colouring of flows
+palette: Choose colour palette
+colourpalette: Colour palette
+custom: Custom
+black: Black
+white: White
+colour_custom: Select custom colours
+stratumColour: Choose colour of stratum
+download_plot: Download plot
+en: English
+de: German
+columns: Columns
+choose_flow_colours: Choose flow colours
+styling: Styling

@@ -1,0 +1,37 @@
+upload_data: Daten hochladen
+dataset: Daten
+options: Optionen
+viz: Sankey-Diagramm
+sample: Beispiel-Datensatz
+sample_lb: Wähle einen Beispiel-Datensatz aus
+sample_ch_nm_0: Titanic
+sample_ch_0: titanic_data.csv
+sample_ch_nm_1: Parlamentswahlen in Großbritannien 2019
+sample_ch_1: election_data.csv
+paste: Kopieren & Einfügen
+paste_pl: Hier kopieren & einfügen
+upload: Hochladen von CSV/XLS
+upload_lb: Wähle CSV/XLS Datei aus
+upload_bt_lb: Durchsuchen...
+upload_pl: Keine Datei ausgewählt
+google: Google sheets
+google_sh_lb: Daten von einem Google sheet
+google_sh_pl: https://docs.google.com/spreadsheets/...
+google_sh_pg_lb: Sheet
+chooseColumns: Wähle mindestens zwei Spalten aus
+fillval: Wähle eine Spalte als Füll-Variable (optional)
+colour_method: Wähle eine Farb-Option aus
+palette: Wähle eine Farbpalette aus
+colourpalette: Farbpalette
+custom: Benutzerdefiniert
+black: Schwarz
+white: Weiß
+colour_custom: Wähle eine Farbe aus
+stratumColour: Wähle eine Farbe für das Stratum
+download_plot: Lade das Diagramm herunter
+en: Englisch
+de: Deutsch
+columns: Spalten
+choose_flow_colours: Wähle Flow-Farben
+styling: Style-Einstellungen
+
