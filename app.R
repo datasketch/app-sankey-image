@@ -17,6 +17,7 @@ library(shinypanels)
 library(shi18ny)
 library(hotr)
 library(parmesan)
+library(paletero)
 
 # load functions to prepare data and create plot
 source("sankey_functions.R")
@@ -167,7 +168,7 @@ server <- function(input, output) {
   })
   
   colourCustomChoices <- reactive({
-    rep("#000000", length(categoriesFill()))
+    paletero::paletero_cat(categoriesFill(), palette = "Set1")
   }) 
   
   maxCustomChoices <- reactive({
@@ -175,7 +176,7 @@ server <- function(input, output) {
   })
   
   customColours <- reactive({
-    colours <- paste0("#",input$colour_custom)
+    colours <- input$colour_custom
     names(colours) <- sort(categoriesFill())
     colours
   }) 
