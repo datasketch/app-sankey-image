@@ -3,7 +3,6 @@
 .Rapp.history
 
 # RStudio project files
-*.Rproj
 .Rproj.user/
 .Rproj.user/*
 
