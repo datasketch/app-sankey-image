@@ -69,31 +69,31 @@ server <- function(input, output) {
                  selected =  "sampleData")
   })
 
-  labels <- reactive({
-    sm_f <- paste0("data/", i_(c("sample_titanic", "sample_elections"), lang()))
+  sample_data <- reactive({
+    sm_f <- list("data/titanic_data.csv",
+                 "data/election_data.csv")
     names(sm_f) <- i_(c("sample_titanic_name", "sample_elections_name"), lang())
-
-    list(sampleLabel = i_("sample_lb", lang()),
-         sampleFiles = sm_f,
-         sampleSelected = sm_f[1],
-
-         pasteLabel = i_("paste", lang()),
-         pasteValue = "",
-         pastePlaceholder = i_("paste_pl", lang()),
-         pasteRows = 5,
-
-         uploadLabel = i_("upload_lb", lang()),
-         uploadButtonLabel = i_("upload_bt_lb", lang()),
-         uploadPlaceholder = i_("upload_pl", lang()),
-
-         googleSheetLabel = i_("google_sh_lb", lang()),
-         googleSheetValue = "",
-         googleSheetPlaceholder = i_("google_sh_pl", lang()),
-         googleSheetPageLabel = i_("google_sh_pg_lb", lang())
-    )
+    sm_f
   })
 
-  inputData <- tableInputServer("initial_data", labels())
+  inputData <- tableInputServer("initial_data", 
+                                sampleLabel = i_("sample_lb", lang()),
+                                sampleFiles = sample_data(),
+                                sampleSelected = names(sample_data())[1],
+                                
+                                pasteLabel = i_("paste", lang()),
+                                pasteValue = "",
+                                pastePlaceholder = i_("paste_pl", lang()),
+                                pasteRows = 5,
+                                
+                                uploadLabel = i_("upload_lb", lang()),
+                                uploadButtonLabel = i_("upload_bt_lb", lang()),
+                                uploadPlaceholder = i_("upload_pl", lang()),
+                                
+                                googleSheetLabel = i_("google_sh_lb", lang()),
+                                googleSheetValue = "",
+                                googleSheetPlaceholder = i_("google_sh_pl", lang()),
+                                googleSheetPageLabel = i_("google_sh_pg_lb", lang()))
 
   output$dataset <- renderUI({
     if (is.null(inputData()))
@@ -165,15 +165,9 @@ server <- function(input, output) {
   })
 
   colourCustomChoices <- reactive({
-<<<<<<< HEAD
-    rep("#000000", length(categoriesFill()))
-  })
-
-=======
     paletero::paletero_cat(categoriesFill(), palette = "Set1")
   }) 
-  
->>>>>>> dea45586f73132e7c38cddcf3f78f3ac08b366bf
+
   maxCustomChoices <- reactive({
     length(categoriesFill())
   })
