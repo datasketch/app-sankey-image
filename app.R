@@ -181,6 +181,7 @@ server <- function(input, output, session) {
   })
 
   plot_data <- reactive({
+    if(!input$chooseColumns %in% names(data_load())) return()
     data <- prepare_data(df = data_load(),
                  col_vars = input$chooseColumns,
                  fill_var = input$fillval)
@@ -190,7 +191,6 @@ server <- function(input, output, session) {
 
   gg_viz <- reactive({
     req(input$chooseColumns)
-    # browser()
     palette <- input$palette
     manualcols <- NULL
     colour_method <- "colourpalette"
