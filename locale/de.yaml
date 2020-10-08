@@ -36,4 +36,15 @@ pt: Portugiesisch
 columns: Spalten
 choose_flow_colours: Wähle Flow-Farben
 styling: Style-Einstellungen
-
+error_down: Es ist ein Problem aufgetreten; probiere es später noch einmal.
+download_viz: Download
+get_link: Link zur Grafik
+gl_name: Name
+gl_slug: Slug
+gl_description: Beschreibung
+gl_license: Lizent
+gl_tags: Tags
+gl_category: Kategorie
+gl_save: In DS-Library speichern
+gl_url: URL
+gl_iframe: Kopieren zum Einbetten in Webseite

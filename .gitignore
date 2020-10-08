@@ -11,3 +11,6 @@
 
 # Deployment files
 rsconnect/
+
+# Env file
+.env

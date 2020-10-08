@@ -36,3 +36,15 @@ pt: Portuguese
 columns: Columns
 choose_flow_colours: Choose flow colours
 styling: Styling
+error_down: There has been a problem; try again later.
+download_viz: Download
+get_link: Get link
+gl_name: Name
+gl_slug: Slug
+gl_description: Description
+gl_license: License
+gl_tags: Tags
+gl_category: Category
+gl_save: Save in dslibrary
+gl_url: URL
+gl_iframe: Copy to embed
