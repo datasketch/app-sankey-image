@@ -9,6 +9,7 @@ library(RColorBrewer)
 library(scales)
 library(tidyverse)
 library(V8)
+library(shinydisconnect)
 
 # load in ds packages
 library(dspins)
@@ -25,6 +26,15 @@ source("sankey_functions.R")
 
 # Define UI for data download app ----
 ui <- panelsPage(useShi18ny(),
+                 disconnectMessage(
+                   text = "Oh no!, la sesión a finalizado, si estabas trabajando en la app, por favor contacta a soporte y cuentanos que ha sucedido//Oh no, the session has ended, if you were working on the app, please contact support and tell us what has happened",
+                   refresh = "O, intenta de nuevo//Or try again",
+                   background = "#385573",
+                   colour = "white",
+                   overlayColour = "grey",
+                   overlayOpacity = 0.3,
+                   refreshColour = "#FBC140"
+                 ),
                  langSelectorInput("lang", position = "fixed"),
                  panel(title = ui_("upload_data"),
                        width = 200,
