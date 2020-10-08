@@ -40,9 +40,7 @@ ui <- panelsPage(useShi18ny(),
                        title_plugin = uiOutput("download"),
                        color = "chardonnay",
                        can_collapse = FALSE,
-                       body = div(
-                         langSelectorInput("lang", position = "fixed"),
-                         plotOutput("sankeyChart"))))
+                       body = uiOutput("viz")))
 
 
 
@@ -130,8 +128,26 @@ server <- function(input, output, session) {
     dic_load()$label
   })
 
+  moreDataInfo <- reactive({
+    data_load() %>% map_df( ~ (data.frame(
+      n_distinct = n_distinct(.x),
+      class = class(.x)
+    )),
+    .id = "variable") %>% filter(!class == "vctrs_vctr")
+  })
+  
   datasetColumnSelected <- reactive({
-    dic_load()$label[1:2]
+    possible_columns <- moreDataInfo() %>% filter(n_distinct < 10) %>% distinct(variable) %>% pull()
+    dic_cat <- dic_load() %>% filter(hdType == "Cat") %>% filter(label %in% possible_columns)
+    dic_cat$label[1:2]
+  })
+  
+  dic_draw <- reactive({
+    moreDataInfo() %>% filter(variable %in% input$chooseColumns)
+  })
+  
+  fillValueSelected <- reactive({
+    datasetColumnSelected()[1]
   })
 
   useFillValue <- reactive({
@@ -182,6 +198,7 @@ server <- function(input, output, session) {
 
   plot_data <- reactive({
     if(!input$chooseColumns %in% names(data_load())) return()
+    if(any(dic_draw()$class != "hd_Cat") | any(dic_draw()$n_distinct > 10)) return()
     data <- prepare_data(df = data_load(),
                  col_vars = input$chooseColumns,
                  fill_var = input$fillval)
@@ -191,6 +208,7 @@ server <- function(input, output, session) {
 
   gg_viz <- reactive({
     req(input$chooseColumns)
+    if(is.null(plot_data()))return()
     palette <- input$palette
     manualcols <- NULL
     colour_method <- "colourpalette"
@@ -216,6 +234,17 @@ server <- function(input, output, session) {
   output$sankeyChart <- renderPlot({
     if(is.null(gg_viz())) return()
     gg_viz()
+  })
+  
+  output$viz <- renderUI({
+    if(is.null(dic_draw()))return()
+    if(any(dic_draw()$class != "hd_Cat") | any(dic_draw()$n_distinct > 10)){
+      v <- div(shinypanels::infomessage(type = "warning" , i_("cannot_plot", lang())),
+               shinypanels::infomessage(type = "info" , i_("data_advice", lang())))
+    } else {
+      v <- plotOutput("sankeyChart")
+    }
+    v
   })
 
 

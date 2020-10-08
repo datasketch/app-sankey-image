@@ -48,3 +48,5 @@ gl_category: Categorias
 gl_save: Guardar na dslibrary
 gl_url: URL
 gl_iframe: Cópia para embutir
+cannot_plot: Esta visualização não pode ser plotada com o tipo de dados que escolheu.
+data_advice: Certifique-se de que utiliza apenas colunas categóricas que tenham menos de 10 categorias.

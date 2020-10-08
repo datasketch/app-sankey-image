@@ -48,3 +48,5 @@ gl_category: Kategorie
 gl_save: In DS-Library speichern
 gl_url: URL
 gl_iframe: Kopieren zum Einbetten in Webseite
+cannot_plot: Dieser Graph can mit den ausgewählten Datentypen nicht erzeugt werden.
+data_advice: Bitte wähle kategorische Spalten mit weniger als zehn Kategorien.
