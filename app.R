@@ -207,7 +207,8 @@ server <- function(input, output, session) {
   })
 
   plot_data <- reactive({
-    if(!input$chooseColumns %in% names(data_load())) return()
+    req(input$chooseColumns)
+    if(any(!input$chooseColumns %in% names(data_load()))) return()
     if(any(dic_draw()$class != "hd_Cat") | any(dic_draw()$n_distinct > 10)) return()
     data <- prepare_data(df = data_load(),
                  col_vars = input$chooseColumns,
